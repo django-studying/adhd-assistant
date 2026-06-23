@@ -1,2 +1,4 @@
-# adhd-assistant
-ADHD AI Assistant
+Проект: ADHD AI Assistant
+Цель проекта:
+
+Создать личного AI-помощника, который помогает человеку с СДВГ
