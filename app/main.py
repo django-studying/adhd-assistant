@@ -26,18 +26,30 @@ def main():
         if text == "task":
             for i, note in enumerate(filtered_notes, 1):
                 if note.get('type', '').strip() == "task":
-                    print(f"{i}. [{note.get('type', '')}]: {note.get('text', '')}")
+                    if note.get('datetime', ''):
+                        print(f"{i}. ({note.get('datetime', '')}) [{note.get('type', '')}]: {note.get('text', '')}")
+                    else:
+                        print(f"{i}. [{note.get('type', '')}]: {note.get('text', '')}")
         if text == "note":
             for i, note in enumerate(filtered_notes, 1):
                 if note.get('type', '').strip() == "note":
-                    print(f"{i}. [{note.get('type', '')}]: {note.get('text', '')}")
+                    if  note.get('datetime', ''):
+                        print(f"{i}. ({note.get('datetime', '')}) [{note.get('type', '')}]: {note.get('text', '')}")
+                    else:
+                        print(f"{i}. [{note.get('type', '')}]: {note.get('text', '')}")
         if text == "idea":
             for i, note in enumerate(filtered_notes, 1):
                 if note.get('type', '').strip() == "idea":
-                    print(f"{i}. [{note.get('type', '')}]: {note.get('text', '')}")
+                    if note.get('datetime', ''):
+                        print(f"{i}. ({note.get('datetime', '')}) [{note.get('type', '')}]: {note.get('text', '')}")
+                    else:
+                        print(f"{i}. [{note.get('type', '')}]: {note.get('text', '')}")
         if text == "all" or text == "":
             for i, note in enumerate(filtered_notes, 1):
-                print(f"{i}. [{note.get('type', '')}]: {note.get('text', '')}")        
+                if note.get('datetime', ''):
+                    print(f"{i}. ({note.get('datetime', '')}) [{note.get('type', '')}]: {note.get('text', '')}")
+                else:
+                    print(f"{i}. [{note.get('type', '')}]: {note.get('text', '')}")
     elif note_type == "clear":
         notes = []
         with open("data/notes.json", "w", encoding="utf-8") as f:
