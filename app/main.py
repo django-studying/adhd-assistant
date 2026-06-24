@@ -18,10 +18,14 @@ def main():
     text = "".join(sys.argv[1:])
     
     if text == "list":
-        for i, note in enumerate(notes,1):
+        filtered_notes = [note for note in notes if note.get('text', '').strip()]
+        for i, note in enumerate(filtered_notes, 1):
             print(f"{i}. {note.get('text', '')}")
-            
-    else:
+    elif text == "clear":
+        notes = []
+        with open("data/notes.json", "w", encoding="utf-8") as f:
+            json.dump(notes, f, ensure_ascii=False, indent=2)
+    elif text.strip():
         add_note(text)
 
 if __name__ == "__main__":
